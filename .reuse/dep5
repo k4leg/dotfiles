@@ -1,0 +1,4 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: dotfiles
+Upstream-Contact: k4leg <python.bogdan@gmail.com>
+Source: https://github.com/k4leg/dotfiles/
