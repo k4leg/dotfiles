@@ -8,3 +8,6 @@ core:
 data:
   email: python.bogdan@gmail.com
   signingKey: DBD9F071BA9ED452
+
+font:
+  monospace: JetBrains Mono
