@@ -2,6 +2,11 @@
 #
 # SPDX-License-Identifier: CC0-1.0
 
+[ ! -v XDG_DATA_HOME ] && export XDG_DATA_HOME=~/.local/share
+[ ! -v XDG_CONFIG_HOME ] && export XDG_CONFIG_HOME=~/.config
+[ ! -v XDG_STATE_HOME ] && export XDG_STATE_HOME=~/.local/state
+[ ! -v XDG_CACHE_HOME ] && export XDG_CACHE_HOME=~/.cache
+
 [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]] \
     && source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 
