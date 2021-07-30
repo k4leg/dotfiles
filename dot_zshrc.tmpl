@@ -6,6 +6,7 @@
 [ ! -v XDG_CONFIG_HOME ] && export XDG_CONFIG_HOME=~/.config
 [ ! -v XDG_STATE_HOME ] && export XDG_STATE_HOME=~/.local/state
 [ ! -v XDG_CACHE_HOME ] && export XDG_CACHE_HOME=~/.cache
+export PATH="$PATH":~/.local/bin
 
 __path_to_p10k_instant_prompt="$XDG_CACHE_HOME/p10k-instant-prompt-${(%):-%n}.zsh"
 [ -r "$__path_to_p10k_instant_prompt" ] \
