@@ -10,4 +10,5 @@ data:
   signingKey: DBD9F071BA9ED452
 
 font:
+  interface: Noto Sans Display
   monospace: JetBrains Mono
