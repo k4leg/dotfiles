@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# SPDX-FileCopyrightText: 2021 k4leg <python.bogdan@gmail.com>
+#
+# SPDX-License-Identifier: CC0-1.0
+
+window_id="$1"
+class_name="$2"
+instance_name="$3"
+intermediate_consequences="$4"
+window_role="$(xprop -id "$window_id" WM_WINDOW_ROLE)"
+
+if [ "$class_name" == vlc ] && grep -qv vlc-main <<< "$window_role"; then
+    echo state=floating layer=above
+fi

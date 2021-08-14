@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+
+# SPDX-FileCopyrightText: 2021 k4leg <python.bogdan@gmail.com>
+#
+# SPDX-License-Identifier: CC0-1.0
+
+bspc monitor -d I II III IV V VI VII VIII IX X
+
+bspc config window_gap 0
+bspc config single_monocle true
+bspc config borderless_monocle true
+bspc config focus_follows_pointer true
+bspc config external_rules_command ~/.config/bspwm/external_rules
+
+~/.config/bspwm/autostart
