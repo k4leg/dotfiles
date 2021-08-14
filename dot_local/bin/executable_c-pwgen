@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# SPDX-FileCopyrightText: 2021 k4leg <python.bogdan@gmail.com>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+pw_length="${1:-40}"
+shift
+num_pw="${1:-50}"
+shift
+if [ -v 1 ]; then
+    >&2 echo Error: more than 2 arguments.
+    exit 1
+fi
+
+pwgen -cnys "$pw_length" "$num_pw"
