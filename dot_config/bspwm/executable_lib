@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+# SPDX-FileCopyrightText: 2021 k4leg <python.bogdan@gmail.com>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+function is_running {
+    pgrep -u "$UID" -x "$1" > /dev/null
+}
+
+function run {
+    "$@" > /dev/null &
+}
+
+function run_if_not_running {
+    is_running "$1" || run "$@"
+}
+
+function restart_ {
+    killall -q "$1"
+    while is_running "$1"; do
+        sleep 1
+    done
+    run "$@"
+}
