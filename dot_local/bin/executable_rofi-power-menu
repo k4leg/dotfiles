@@ -1,0 +1,23 @@
+#!/usr/bin/env bash
+
+# SPDX-FileCopyrightText: 2021 k4leg <python.bogdan@gmail.com>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+poweroff_command=poweroff
+reboot_command=reboot
+hibernate_command='systemctl hibernate'
+suspend_command='systemctl suspend'
+
+rofi_command=(rofi -lines 4 -dmenu -p 'power menu')
+
+options=(poweroff reboot hibernate suspend)
+function convert_options_to_text {
+    local i
+    for i in "${options[@]}"; do
+        echo "$i"
+    done
+}
+
+selected_command="$(convert_options_to_text | "${rofi_command[@]}")"
+[ -v selected_command ] && eval "\${${selected_command}_command}"
