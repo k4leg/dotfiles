@@ -1,0 +1,38 @@
+#!/usr/bin/env bash
+
+# SPDX-FileCopyrightText: 2021 k4leg <python.bogdan@gmail.com>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+set -e
+
+site=http://0x0.st
+content="$2"
+case "$1" in
+    f|file)
+        name=file
+        content="@$content"
+    ;;
+    s|shorten) name=shorten;;
+    u|url) name=url;;
+    -h|--help)
+        echo "$0 file|f|shorten|s|url|u <file>|<url>"
+        exit 0
+    ;;
+    -|--)
+        if [ -n "$(cat /dev/stdin)" ]; then
+            >&2 echo "Error: '$0' doesn't support /dev/stdin."
+            exit 1
+        fi
+    ;;
+    *)
+        >&2 echo "Error: expected 'file|f|shorten|s|url|u', not '$1'."
+        exit 1
+    ;;
+esac
+if [ $# != 2 ]; then
+    >&2 echo "Error: 2 expected arguments instead of $#."
+    exit 1
+fi
+
+curl -F "$name=$content" "$site"
