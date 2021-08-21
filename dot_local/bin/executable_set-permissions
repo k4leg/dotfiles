@@ -7,24 +7,30 @@
 import os
 import sys
 
-args = ' '.join([f'"{i}"' for i in sys.argv[1:]])
+args = sys.argv[1:]
 
-print("Dirs:")
-os.system(f'find {args} -type d')
-print("Files:")
-os.system(f'find {args} -type f')
+files = []
+dirs = []
+for path in args:
+    for dirpath, dirnames, filenames in os.walk(path):
+        files.extend([os.path.join(dirpath, f) for f in filenames])
+        dirs.extend([os.path.join(dirpath, d) for d in dirnames])
+
+if not (dirs or files):
+    print("Nothing to do.")
+    sys.exit()
+if dirs:
+    print(f"Dirs:\n- " + '\n- '.join(dirs))
+if files:
+    print(f"Files:\n- " + '\n- '.join(files))
 
 inp = input(
     "Set permissions (for dirs drwx------, for files .rw-------)? [y/N] "
 ).casefold()
 if inp not in ('y', 'yes'):
-    sys.exit(0)
+    sys.exit()
 
-cmds = [
-    f'find {args} ' + r'-type d -exec chmod 700 \"{}\" \;',
-    f'find {args} ' + r'-type f -exec chmod 600 \"{}\" \;',
-]
-for cmd in cmds:
-    return_code = os.system(cmd)
-    if return_code != 0:
-        sys.exit(return_code)
+for d in dirs:
+    os.chmod(d, 0o700)
+for f in files:
+    os.chmod(f, 0o600)
