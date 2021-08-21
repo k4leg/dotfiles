@@ -11,7 +11,7 @@ run setxkbmap us,ru -option grp:caps_toggle,compose:menu
 run xinput --set-prop 'SynPS/2 Synaptics TouchPad' 'libinput Tapping Enabled' 1
 run xinput --set-prop 'SINOWEALTH Game Mouse' 'libinput Accel Profile Enabled' 0, 1
 run xinput --set-prop 'SINOWEALTH Game Mouse' 'libinput Accel Speed' -0.7
-restart_ xwallpaper --daemon --maximize ~/pictures/backgrounds/dusk.png
+restart_ feh --no-fehbg --bg-scale ~/pictures/backgrounds/dusk.png
 run_if_not_running sxhkd
 run_if_not_running picom -b
 run_if_not_running /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
