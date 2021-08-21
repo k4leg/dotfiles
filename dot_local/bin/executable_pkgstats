@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# SPDX-FileCopyrightText: 2021 k4leg <python.bogdan@gmail.com>
+#
+# SPDX-License-Identifier: GPL-3.0-or-later
+
+set -e
+
+if [ $# == 0 ]; then
+    >&2 echo Error: expected at least 1 argument.
+    exit 1
+fi
+
+PKGSTATS_URL=https://pkgstats.archlinux.de
+packages="$(sed 's/ /,/g' <<< "$@")"
+xdg-open "$PKGSTATS_URL/compare/packages#packages=$packages"
