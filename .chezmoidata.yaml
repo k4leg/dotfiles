@@ -8,7 +8,7 @@ core:
 
 data:
   email: python.bogdan@gmail.com
-  signingKey: DBD9F071BA9ED452
+  signingKey: A963D59C96F263DD
 
 font:
   interface: Noto Sans Display
