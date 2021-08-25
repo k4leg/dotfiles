@@ -4,10 +4,10 @@
 #
 # SPDX-License-Identifier: GPL-3.0-or-later
 
-poweroff_command=poweroff
-reboot_command=reboot
-hibernate_command='systemctl hibernate'
-suspend_command='systemctl suspend'
+poweroff_command='loginctl poweroff'
+reboot_command='loginctl reboot'
+hibernate_command='loginctl hibernate'
+suspend_command='loginctl suspend'
 
 rofi_command=(rofi -lines 4 -dmenu -p 'power menu')
 
