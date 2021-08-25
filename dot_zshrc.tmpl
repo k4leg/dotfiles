@@ -31,42 +31,6 @@ alias e!=sudoedit
 alias e-zshrc='chezmoi edit ~/.zshrc'
 alias e-nvim='chezmoi edit "$XDG_CONFIG_HOME/nvim/init.vim"'
 
-alias pkg=pacman
-alias pkg!='! pacman'
-
-alias pkgs!='pkg! -S'
-alias pkgs='pkgs! --needed'
-alias pkgsw='pkgs -w'
-alias pkgsyu='pkg! -Syu'
-alias pkgsyu!='pkgsyu -yu'
-alias pkgsyuw='pkgsyu -w'
-alias pkgsyuw!='pkgsyu! -w'
-
-alias pkgr='pkg! -R'
-alias pkgrns='pkgr -ns'
-alias pkgrnsu='pkgrns -u'
-
-alias pkgss='pkg -Ss'
-alias pkgsi='pkg -Si'
-alias pkgsi!='pkgsi -i'
-
-alias pkgq='pkg -Q'
-alias pkgqs='pkgq -s'
-alias pkgqi='pkgq -i'
-alias pkgqi!='pkgqi -i'
-alias pkgql='pkgq -l'
-alias pkgqo='pkgq -o'
-alias pkgqk='pkgq -k'
-alias pkgqk!='pkgqk -k'
-
-alias pkgf='pkg -F'
-alias pkgfy='pkg! -Fy'
-alias pkgfy!='pkgfy -y'
-alias pkgfl='pkgf -l'
-alias pkgfx='pkgf -x'
-
-alias pkgu='pkg! -U'
-
 alias ls='ls --color=tty -F'
 alias diff='diff --color -Naurp0'
 alias delta='delta --dark'
