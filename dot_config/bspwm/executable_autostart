@@ -14,7 +14,7 @@ run xinput --set-prop 'SINOWEALTH Game Mouse' 'libinput Accel Speed' -0.7
 restart_ feh --no-fehbg --bg-scale ~/pictures/backgrounds/dusk.png
 run_if_not_running sxhkd
 run_if_not_running picom -b
-run_if_not_running /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+run_if_not_running /usr/libexec/polkit-gnome-authentication-agent-1
 run_if_not_running dunst
 run_if_not_running nm-applet --indicator
 run_if_not_running blueman-applet
