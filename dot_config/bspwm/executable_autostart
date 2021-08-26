@@ -19,4 +19,5 @@ run_if_not_running dunst
 run_if_not_running nm-applet --indicator
 run_if_not_running blueman-applet
 run_if_not_running flameshot
+run_if_not_running clipmenud
 restart_ polybar top
