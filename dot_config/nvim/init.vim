@@ -106,6 +106,7 @@ hi Conceal ctermbg=none
 "" lervag/vimtex
 let g:tex_flavor='latex'
 let g:vimtex_quickfix_mode=0
+let g:vimtex_view_method='zathura'
 
 "" marko-cerovac/material.nvim
 let g:material_style = 'darker'
