@@ -32,6 +32,8 @@ Plug 'lervag/vimtex', {'commit': '607956c431fc00ffe752c61debc80ac95293ca5b'}
 Plug 'marko-cerovac/material.nvim', {'commit': '5f9d88930fc1a40dc8d419da830dae3d9aae5b80'}
 
 Plug 'baskerville/vim-sxhkdrc', {'for': 'sxhkdrc', 'commit': '7b8abc305ba346c3af7d57da0ebec2b2f2d3f5b0'}
+
+Plug 'windwp/nvim-autopairs', {'commit': '70ed2702c988a00f65c450a6f142b7f3df2656e1'}
 call plug#end()
 
 set tabstop=4 shiftwidth=4 expandtab smartindent
@@ -74,7 +76,8 @@ require'nvim-treesitter.configs'.setup {
     "latex", "python", "regex", "toml", "yaml"
   },
   highlight = { enable = true },
-  indent = { enable = true }
+  indent = { enable = true },
+  autopairs = { enable = true }
 }
 EOF
 set foldlevel=1000000 foldmethod=expr foldexpr=nvim_treesitter#foldexpr()
@@ -113,3 +116,36 @@ let g:material_style = 'darker'
 let g:material_italic_comments = v:true
 let g:material_disable_background = v:true
 colorscheme material
+
+"" windwp/nvim-autopairs
+lua << EOF
+local npairs = require('nvim-autopairs')
+local Rule = require('nvim-autopairs.rule')
+local remap = vim.api.nvim_set_keymap
+
+npairs.setup({ check_ts = true, fast_wrap = {} })
+
+_G.MUtils= {}
+vim.g.completion_confirm_key = ""
+MUtils.completion_confirm = function()
+  if vim.fn.pumvisible() ~= 0  then
+    if vim.fn.complete_info()["selected"] ~= -1 then
+      require'completion'.confirmCompletion()
+      return npairs.esc("<c-y>")
+    else
+      vim.api.nvim_select_popupmenu_item(0, false, false, {})
+      require'completion'.confirmCompletion()
+      return npairs.esc("<c-n><c-y>")
+    end
+  else
+    return npairs.autopairs_cr()
+  end
+end
+
+remap(
+  'i',
+  '<CR>',
+  'v:lua.MUtils.completion_confirm()',
+  { expr = true, noremap = true }
+)
+EOF
